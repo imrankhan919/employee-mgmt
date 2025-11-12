@@ -9,6 +9,12 @@ const PORT = process.env.PORT || 5000
 // DB CONNECTION
 connectDB()
 
+// Body-Parser
+app.use(express.json())
+app.use(express.urlencoded())
+
+
+
 app.get("/", (req, res) => {
     res.json({
         message: "WELCOME TO CUSTOMER API 1.0"
