@@ -1,5 +1,6 @@
 const express = require('express')
 const { getEmployees, createEmployee, getEmployee, updateEmployee, removeEmployee } = require('../controllers/employeeController')
+const protect = require('../middleware/authMiddleware')
 
 const router = express.Router()
 
@@ -11,7 +12,7 @@ router.get("/", getEmployees)
 // METHOD : POST
 // ENDPOINT : /api/employee
 // DESC : CREATE EMPLOYEE
-router.post("/", createEmployee)
+router.post("/", protect, createEmployee)
 
 // METHOD : GET
 // ENDPOINT : /api/employee/:id
@@ -21,12 +22,12 @@ router.get("/:id", getEmployee)
 // METHOD : PUT
 // ENDPOINT : /api/employee/:id
 // DESC : UPDATE SINGLE EMPLOYEE
-router.put("/:id", updateEmployee)
+router.put("/:id", protect, updateEmployee)
 
 // METHOD : DELETE
 // ENDPOINT : /api/employee/:id
 // DESC : REMOVE SINGLE EMPLOYEE
-router.delete("/:id", removeEmployee)
+router.delete("/:id", protect, removeEmployee)
 
 
 module.exports = router

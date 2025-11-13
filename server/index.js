@@ -21,9 +21,11 @@ app.get("/", (req, res) => {
     })
 })
 
-
+// Blog Routes
 app.use("/api/employee", require("./routes/employeeRoute"))
 
+// Auth Routes
+app.use("/api/auth", require("./routes/authRoutes"))
 
 
 app.get("/products", (req, res) => {
